@@ -9,10 +9,12 @@ import { signIn } from "next-auth/react";
 export default function AuthPage() {
   const searchParams = useSearchParams();
   const [isSignUp, setIsSignUp] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Read mode from URL search parameters
   useEffect(() => {
-    const mode = searchParams.get('mode');
+    setMounted(true);
+    const mode = searchParams?.get('mode');
     // Default to sign in if no mode is specified
     setIsSignUp(mode === 'signup');
   }, [searchParams]);
@@ -20,6 +22,15 @@ export default function AuthPage() {
   const handleGoogleAuth = () => {
     signIn("google");
   };
+
+  // Show loading state until component is mounted
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
