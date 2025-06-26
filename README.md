@@ -14,8 +14,8 @@ CodeBaby is a playful web app that explains code in simple, beginner-friendly la
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/codebaby.git
-cd codebaby
+git clone https://github.com/AtharvaRJadhav/codebaby-ai.git
+cd codebaby-ai
 ```
 
 ### 2. Install dependencies
